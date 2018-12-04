@@ -12,9 +12,9 @@
 @synthesize email;
 @synthesize licenseKey_;
 @synthesize validLicenseKey;
-static NSString *TEST_GAME_ID = @"42521";
-static NSString *TEST_VIDEO_AD_PLACEMENT_ID = @"defaultZone";
-static NSString *TEST_REWARDED_VIDEO_AD_PLACEMENT_ID = @"rewardedVideoZone";
+static NSString *TEST_GAME_ID = @"";
+static NSString *TEST_VIDEO_AD_PLACEMENT_ID = @"";
+static NSString *TEST_REWARDED_VIDEO_AD_PLACEMENT_ID = @"";
 //
 @synthesize gameId;
 @synthesize videoAdPlacementId;
@@ -91,26 +91,27 @@ static NSString *TEST_REWARDED_VIDEO_AD_PLACEMENT_ID = @"rewardedVideoZone";
 	NSString *str2 = [self md5:[NSString stringWithFormat:@"cordova-plugin-ad-unityads: %@", email]];
 	NSString *str3 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.: %@", email]];
 	NSString *str4 = [self md5:[NSString stringWithFormat:@"com.cranberrygame.cordova.plugin.ad.unityads: %@", email]];
-	if(licenseKey_ != Nil && ([licenseKey_ isEqualToString:str1] || [licenseKey_ isEqualToString:str2] || [licenseKey_ isEqualToString:str3] || [licenseKey_ isEqualToString:str4])){
-		self.validLicenseKey = YES;
-		NSArray *excludedLicenseKeys = [NSArray arrayWithObjects: @"xxx", nil];
-		for (int i = 0 ; i < [excludedLicenseKeys count] ; i++) {
-			if([[excludedLicenseKeys objectAtIndex:i] isEqualToString:licenseKey]) {
-				self.validLicenseKey = NO;
-				break;
-			}
-		}
-	}
-	else {
-		self.validLicenseKey = NO;
-	}
-	if (self.validLicenseKey)
-		NSLog(@"valid licenseKey");
-	else {
-		NSLog(@"invalid licenseKey");
+	self.validLicenseKey = YES;
+	//if(licenseKey_ != Nil && ([licenseKey_ isEqualToString:str1] || [licenseKey_ isEqualToString:str2] || [licenseKey_ isEqualToString:str3] || [licenseKey_ isEqualToString:str4])){
+	//	self.validLicenseKey = YES;
+	//	NSArray *excludedLicenseKeys = [NSArray arrayWithObjects: @"xxx", nil];
+	//	for (int i = 0 ; i < [excludedLicenseKeys count] ; i++) {
+	//		if([[excludedLicenseKeys objectAtIndex:i] isEqualToString:licenseKey]) {
+	//			self.validLicenseKey = NO;
+	//			break;
+	//		}
+	//	}
+	//}
+	//else {
+	//	self.validLicenseKey = NO;
+	//}
+	//if (self.validLicenseKey)
+	//	NSLog(@"valid licenseKey");
+	//else {
+	//	NSLog(@"invalid licenseKey");
 		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Cordova UnityAds: invalid email / license key. You can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		//[alert show];
-	}
+	//}
 }
 
 - (NSString*) md5:(NSString*) input {
@@ -132,13 +133,13 @@ static NSString *TEST_REWARDED_VIDEO_AD_PLACEMENT_ID = @"rewardedVideoZone";
 	self.rewardedVideoAdPlacementId = rewardedVideoAdPlacementId;
 	self.isTest = isTest;
 	
-	if (!validLicenseKey) {
-		if (arc4random() % 100 <= 1) {//0 ~ 99		
-			self.gameId = TEST_GAME_ID;
-			self.videoAdPlacementId = TEST_VIDEO_AD_PLACEMENT_ID;
-			self.rewardedVideoAdPlacementId = TEST_REWARDED_VIDEO_AD_PLACEMENT_ID;
-		}
-	}
+	//if (!validLicenseKey) {
+	//	if (arc4random() % 100 <= 1) {//0 ~ 99		
+	//		self.gameId = TEST_GAME_ID;
+	//		self.videoAdPlacementId = TEST_VIDEO_AD_PLACEMENT_ID;
+	//		self.rewardedVideoAdPlacementId = TEST_REWARDED_VIDEO_AD_PLACEMENT_ID;
+	//	}
+	//}
  
 	//https://unityads.unity3d.com/help/Documentation%20for%20Publishers/Integration-Guide-for-iOS
 	//https://unityads.unity3d.com/help/Documentation%20for%20Publishers/Integration-Guide-for-Unity
