@@ -111,9 +111,9 @@ public class UnityAdsPlugin extends CordovaPlugin {
 	protected String email;
 	protected String licenseKey;
 	public boolean validLicenseKey;
-	protected String TEST_GAME_ID = "42520";
-	protected String TEST_VIDEO_AD_PLACEMENT_ID = "defaultZone";
-	protected String TEST_REWARDED_VIDEO_AD_PLACEMENT_ID = "rewardedVideoZone";
+	protected String TEST_GAME_ID = "";
+	protected String TEST_VIDEO_AD_PLACEMENT_ID = "";
+	protected String TEST_REWARDED_VIDEO_AD_PLACEMENT_ID = "";
 	//
 	protected String gameId;
 	protected String videoAdPlacementId;
@@ -279,25 +279,26 @@ public class UnityAdsPlugin extends CordovaPlugin {
 		String str2 = Util.md5("cordova-plugin-ad-unityads: " + email);
 		String str3 = Util.md5("com.cranberrygame.cordova.plugin.: " + email);
 		String str4 = Util.md5("com.cranberrygame.cordova.plugin.ad.unityads: " + email);
-		if(licenseKey != null && (licenseKey.equalsIgnoreCase(str1) || licenseKey.equalsIgnoreCase(str2) || licenseKey.equalsIgnoreCase(str3) || licenseKey.equalsIgnoreCase(str4))) {
-			this.validLicenseKey = true;
+		this.validLicenseKey = true;//
+		//if(licenseKey != null && (licenseKey.equalsIgnoreCase(str1) || licenseKey.equalsIgnoreCase(str2) || licenseKey.equalsIgnoreCase(str3) || licenseKey.equalsIgnoreCase(str4))) {
+		//	this.validLicenseKey = true;
 			//
-			String[] excludedLicenseKeys = {"xxx"};
-			for (int i = 0 ; i < excludedLicenseKeys.length ; i++) {
-				if (excludedLicenseKeys[i].equals(licenseKey)) {
-					this.validLicenseKey = false;
-					break;
-				}
-			}			
-			if (this.validLicenseKey)
-				Log.d(LOG_TAG, String.format("%s", "valid licenseKey"));
-			else
-				Log.d(LOG_TAG, String.format("%s", "invalid licenseKey"));
-		}
-		else {
-			Log.d(LOG_TAG, String.format("%s", "invalid licenseKey"));
-			this.validLicenseKey = false;			
-		}
+		//	String[] excludedLicenseKeys = {"xxx"};
+		//	for (int i = 0 ; i < excludedLicenseKeys.length ; i++) {
+		//		if (excludedLicenseKeys[i].equals(licenseKey)) {
+		//			this.validLicenseKey = false;
+		//			break;
+		//		}
+		//	}			
+		//	if (this.validLicenseKey)
+		//		Log.d(LOG_TAG, String.format("%s", "valid licenseKey"));
+		//	else
+		//		Log.d(LOG_TAG, String.format("%s", "invalid licenseKey"));
+		//}
+		//else {
+		//	Log.d(LOG_TAG, String.format("%s", "invalid licenseKey"));
+		//	this.validLicenseKey = false;			
+		//}
 		//if (!this.validLicenseKey)
 		//	Util.alert(cordova.getActivity(),"Cordova UnityAds: invalid email / license key. You can get free license key from https://play.google.com/store/apps/details?id=com.cranberrygame.pluginsforcordova");			
 	}
@@ -309,13 +310,13 @@ public class UnityAdsPlugin extends CordovaPlugin {
 		this.rewardedVideoAdPlacementId = rewardedVideoAdPlacementId;
 		this.isTest = isTest;
 	
-		if (!validLicenseKey) {
-			if (new Random().nextInt(100) <= 1) {//0~99					
-				this.gameId = TEST_GAME_ID;
-				this.videoAdPlacementId = TEST_VIDEO_AD_PLACEMENT_ID;
-				this.rewardedVideoAdPlacementId = TEST_REWARDED_VIDEO_AD_PLACEMENT_ID;
-			}
-		}
+		//if (!validLicenseKey) {
+		//	if (new Random().nextInt(100) <= 1) {//0~99					
+		//		this.gameId = TEST_GAME_ID;
+		//		this.videoAdPlacementId = TEST_VIDEO_AD_PLACEMENT_ID;
+		//		this.rewardedVideoAdPlacementId = TEST_REWARDED_VIDEO_AD_PLACEMENT_ID;
+		//	}
+		//}
 
 		//https://unityads.unity3d.com/help/Documentation%20for%20Publishers/Integration-Guide-for-Android
 		UnityAds.init(cordova.getActivity(), this.gameId, new MyUnityAdsListener());
